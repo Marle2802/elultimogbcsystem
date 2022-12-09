@@ -17,8 +17,12 @@ return new class extends Migration
             $table->increments('id')->unsigned();
             $table->integer('servicio_id')->unsigned();
             $table->integer('reserva_id')->unsigned();
-            $table->foreign('servicio_id')->references('id')->on('servicios');
-            $table->foreign('reserva_id')->references('id')->on('reserva');
+            $table->foreign('servicio_id')->references('id')->on('servicios')
+            ->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
+            $table->foreign('reserva_id')->references('id')->on('reserva')
+            ->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
             $table->timestamps();
         });
     }

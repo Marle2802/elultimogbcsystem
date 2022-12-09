@@ -161,7 +161,9 @@
                             {{ $permiso->name }}
                         </label>
                     </div>
-
+                    <div class="form-group">
+                        <input type="hidden" value="web" class="form-control" name="guard_name" autofocus>
+                    </div>
                 </label>
             @endforeach
               

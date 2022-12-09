@@ -35,6 +35,7 @@
                         <th>Fecha Final</th>
                         <th>Fecha Pago Parcial</th>
                         <th>Total Servicio</th>
+                        <th>Pago Adcional</th>
                         <th>Domo</th>
                         <th>Plan</th>
                         <th>Estado</th>
@@ -54,17 +55,21 @@
                         <td>{{ $value->fechafinal }}</td>
                         <td>{{ $value->fechapagoparcial }}</td>
                         <td>{{ $value->totalservicio}}</td>
+                        <td>{{ $value->pagoadicional}}</td>
                         <td>{{ $value->domo}}</td>
                         <td>{{ $value->plan}}</td>
                         <td>
                             @if($value->estado == 1)
 
-                            <button class="btn btn-success col-9"><i
-                                    class="fa-sharp fa-solid fa-power-off"></i></button>
+                            <button class="btn btn-success col-9"><i class="bi bi-toggle-on"></i></button>
 
                             @elseif ($value->estado == 2)
 
-                            <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            <button class="btn btn-danger col-9"><i class="bi bi-toggle-off"></i></button>
+                            @elseif ($value->estado == 3)
+
+                            <button class="btn btn-warning col-9"> Cancelado</button>
+
                             @endif
                         </td>
                         <td>
@@ -148,7 +153,7 @@
                         <th>Descripcion</th>
                         <th>Precio</th>
                         <th>Tiempo</th>
-                        
+
 
                 </thead>
                 <tbody>
@@ -179,7 +184,7 @@
     Swal.fire({
   icon: 'success',
   title: 'Perfecto!',
-  text: 'Reserva guardado',
+  text: 'Reserva guardada',
   showConfirmButton: false,
   timer: 2500
 
