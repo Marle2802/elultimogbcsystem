@@ -24,7 +24,7 @@ class ReservaDetalleController extends Controller
 
     }
 
-    public function save(Request $request){
+    public function save(ReservaRequest $request){
 
             $input = $request->all();
             try{
@@ -39,6 +39,7 @@ class ReservaDetalleController extends Controller
                 "fechareserva" =>$input["fechareserva"],
                 "fechainicio" =>$input["fechainicio"],
                 "fechafinal" =>$input["fechafinal"],
+                "pagoadicional" =>$input["pagoadicional"],
                 "fechapagoparcial" =>$input["fechapagoparcial"],
                 "totalservicio" =>$input["totalservicio"],
                 "estado"=>1
@@ -91,12 +92,15 @@ class ReservaDetalleController extends Controller
         //muestra los datos en un formulario
 
         // $caracteristicas = Caracteristica::find($id);
+        $servicioreserva  = ReservaDetalle::select("reserva_detalle.*")
+        ->where("reserva_detalle.reserva_id", $id)->get();
+        $servicios = Servicio::where('estado', 1)->get();
         $reserva = Reserva::find($id);
         $users = User::all();
         $domos = Domo::where('estado', 1)->get();
         $planes = Plan::where('estado', 1)->get();
 
-        return view("Reservas.edit", compact('reserva','users','domos','planes'));
+        return view("Reservas.edit", compact('reserva','users','domos','planes','servicioreserva', 'servicios'));
     }
 
 
@@ -107,6 +111,7 @@ class ReservaDetalleController extends Controller
         $reserva =  Reserva::find($id);
        /*  $reserva->user_id = $request->post('user_id'); */
         $reserva->pagoparcial = $request->post('pagoparcial');
+        $reserva->pagoadicional = $request->post('pagoadicional');
         $reserva->totalpagoparcial = $request->post('totalpagoparcial');
         $reserva->fechareserva = $request->post('fechareserva');
         $reserva->fechainicio = $request->post('fechainicio');
@@ -119,6 +124,17 @@ class ReservaDetalleController extends Controller
         $reserva->save();
 
 
+        $reserva->save();
+        ReservaDetalle::where('reserva_id','=',$reserva->id)->delete();
+        foreach($request["servicio_id"] as $key => $value){
+            ReservaDetalle::create([
+            "servicio_id"=>$value,
+            "reserva_id"=>$reserva->id,
+        ]);
+
+
         return redirect("reserva/listar")->with('status', '2');
+    }
+
     }
 }

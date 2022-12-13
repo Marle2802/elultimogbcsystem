@@ -197,14 +197,6 @@
                                 <option value="1">Activo</option>
                                 <option value="2">Inactivo</option>
                             </select>
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> ramaharrison
-=======
->>>>>>> 58b9f956979fc516fa1111ec86763cfe024cdb95
->>>>>>> main
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -231,7 +223,7 @@
                     <div class="modal-body">
                         @csrf @method('PUT')
 
-                        
+
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre"

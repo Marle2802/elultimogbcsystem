@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
         'status'=> '1'
         ])->assignRole('SuperAdmin');
 
-        User::create(['name'=> 'Daniela ',
+        User::create(['name'=> 'Daniela',
         'lastName'=> 'Moreno',
         'document'=> '85869670',
         'phone'=> '315671733',
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
         'password' => bcrypt('123456789'),
         'status'=> '1'
         ])->assignRole('Usuario');
-        
+
 
 
         User::factory()->create();

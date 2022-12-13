@@ -14,41 +14,41 @@ class ServiciosController extends Controller
 
     }
 
-    public function guardar(ServiciosRequest $request){
+    public function guardar(){
 
         $campos=request()->validate([
-            'nombre'=>'',
-            'descripcion'=>'',
-            'precio'=>'',
-            'tiempo'=>'',
-            'estado'=>'',
-    
+            'nombre'=>'required|min:3',
+            'descripcion'=>'required',
+            'precio'=>'required',
+            'tiempo'=>'required',
+            'estado'=>'required',
+
         ]);
         Servicio::create($campos);
 
-        return redirect('servicios')->with('mensaje', 'Servicio guardo'); 
-    
+        return redirect('servicios')->with('mensaje', 'Servicio guardo');
+
     }
 
-    public function actualizar(Servicio $servicio, ServiciosActualizarRequest $request){
+    public function actualizar(Servicio $servicio){
 
         $campos=request()->validate([
-            'nombre'=>'',
-            'descripcion'=>'',
-            'precio'=>'',
-            'tiempo'=>'',
-            'estado'=>'',
-    
+            'nombre'=>'required|min:3',
+            'descripcion'=>'required',
+            'precio'=>'required',
+            'tiempo'=>'required',
+            'estado'=>'required',
+
         ]);
         $servicio->update($campos);
-    
+
         return redirect('servicios')->with('mensaje', 'Servicio actualizado');
     }
 
 
-   /*  public function eliminar(Servicio $servicio)
+    public function eliminar(Servicio $servicio)
     {
         $servicio->delete();
         return redirect('servicios')->with('mensaje', 'Servicio eliminada');
-    }*/
-} 
+    }
+}
