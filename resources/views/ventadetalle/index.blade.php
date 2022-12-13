@@ -2,7 +2,7 @@
 @section('aside_menu')
     @include('layouts.aside')
 @endsection
-@section('titulo_ventana', 'Lista Ventas')
+@section('titulo_ventana', 'Agregar Ventas')
 
 @section('Contenido_app')
     <br>
@@ -52,6 +52,5 @@
     </form>
 
 
-
-
     @endsection
+

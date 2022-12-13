@@ -46,12 +46,13 @@
 
                     <div class="form-group">
                         <label for="pagoparcial">Pago Parcial</label>
-                        <input type="number" class="form-control" disabled placeholder="Ingrese el pago parcial" name="pagoparcial"
+                        <input type="number" class="form-control" disabled placeholder="Ingrese el pago parcial"
+                        name="pagoparcial"
                         value="{{ $venta->pagoparcial}}" required>
                     </div>
                     <div class="form-group">
                         <label for="totalpagoparcial">Total Pago</label>
-                        <input type="number" class="form-control" placeholder="Ingrese el total de pago parcial  "
+                        <input type="number" class="form-control" placeholder="Ingrese el total de pago parcial"
                             name="totalpagoparcial" value="{{   $venta->totalpagoparcial }}" required>
                     </div>
                 <div class="form-group">
@@ -93,8 +94,5 @@
         </div>
     </div>
 </form>
-
-
-
 
 @endsection

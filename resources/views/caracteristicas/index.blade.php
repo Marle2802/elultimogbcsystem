@@ -124,7 +124,8 @@
                                         class="fas fa-info-circle fa-lg text-success"></i></a>
                                 <a class="btn btn-warning" href="#editarCaracteristica{{$caracteristica->id}}" data-toggle="modal"
                                     data-target="#editarCaracteristica{{$caracteristica->id}}"
-                                    style="margin-left: 20px; margin-right: 20px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                    style="margin-left: 20px; margin-right: 20px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                                </a>
 
                                 {{-- @csrf @method('DELETE')
                                 <button type="submit " style="border: none"><i
@@ -176,6 +177,7 @@
                                 disabled>
                             <small class="text-danger">{{$errors->first('cantidad')}}</small>
                         </div>
+
                         <div class="form-group">
                             <label for="detalle">Detalle</label>
                             <textarea class="form-control" name="detalle" id="detalle" rows="2"
@@ -261,7 +263,7 @@
         </div>
     </div>
 @empty
-<!--No hay empleados-->
+<!--No hay caracteristicas-->
 @endforelse
 </tbody>
 </table>
@@ -323,7 +325,7 @@
 @if (session('mensaje'))
 <script>
     Swal.fire(
-            //'El empleado se guardó con éxito!',
+            //'la caracteristica se guardó con éxito!',
             '{{ session('mensaje') }}',
             'Presione el boton ok para cerrar!',
             'success'

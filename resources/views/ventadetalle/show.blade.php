@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('aside_menu')
-    @include('layouts.aside')
+@include('layouts.aside')
 @endsection
 @section('titulo_ventana', 'Lista Ventas')
 
@@ -12,7 +12,8 @@
     <div class="row">
         <div class="col">
             <div class="col-sm-8 col-sm-offset-2">
-                <a class="btn btn-info col-3" href="/venta/servicios"><i class="fa-solid fa-money-bill-transfer"></i>
+                <a class="btn btn-info col-3" href="/venta/servicios">
+                    <i class="fa-solid fa-money-bill-transfer"></i>
                     Agregar
                     Venta</a>
             </div>
@@ -22,7 +23,8 @@
     <div class="card shadow mb-4 col-12">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered dt-responsive nowrap" id="dataTable" width="100%"
+                <table class="table table-striped table-bordered dt-responsive nowrap"
+                id="dataTable" width="100%"
                     cellspacing="0">
                     <thead>
                         <tr>
@@ -163,7 +165,6 @@
         </div>
     @endif
 
-
 @endsection
 
 @section('scripts')
@@ -193,6 +194,5 @@
             </script>
         @endif
     @endif
-
 
 @endsection

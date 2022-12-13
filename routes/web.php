@@ -13,6 +13,8 @@ use App\Http\Controllers\VentasDetalleController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\DashboarController;
 use App\Http\Controllers\ReservaDetalleController;
+use App\Http\Controllers\RecomendacionesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,10 @@ Route::middleware([
     })->name('dashboard');
 
 
+    // Route::get('/recomendaciones', function () {
+    //     return view('recomendaciones');
+    // });
+
 /*Route::get('/Usuarios', [UserController::class, 'index'])->name('ListUser');
 
 Route::get('/Roles', function () {
@@ -54,7 +60,7 @@ Route::get('/Roles', function () {
 /* Route::put('domos/{domo}', [DomosController::class, 'actualizar'])->name('domoActualizar'); */
 //En las rutas registramos:
 /* Route::delete('domos/{domo}', [DomosController::class, 'eliminar'])->name('domoEliminar');  */
- 
+
 //Usuarios
 Route::get('/Usuarios', [UserController::class, 'index'])->name('ListUser');
 Route::get('/usuario/crear', [UserController::class, 'create'])->name('crearUsuario');
@@ -86,7 +92,7 @@ Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])-
 Route::get('/domo/caracteristicas', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
 Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->name('domocaracteristicaguardar');
 Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name('domocaracteristicalistar');
-Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar'); 
+Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar');
 
 
 
@@ -155,6 +161,12 @@ Route::controller(VentasDetalleController::class)->group(
     }
 );
 
+
+Route::get('recomendaciones', [RecomendacionesController::class, 'index'])->name('vistarecomendacionindex');
+// Route::get('/usuario/crear', [UserController::class, 'create'])->name('crearUsuario');
+// Route::post('/user/guardar', [UserController::class, 'store'])->name('user.store');
+// Route::put('/Usuarios/{user}/actualizar', [UserController::class, 'update'])->name('userUpdate');
+// Route::delete('/Usuarios/{user}', [UserController::class, 'delete'])->name('userDestroy');
 
 
 });

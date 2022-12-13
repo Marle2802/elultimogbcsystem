@@ -31,6 +31,7 @@
                             required>
                     </div>
 
+
                     <div class="form-group col-6">
                         <label for="numerobaños">Número de baños</label>
                         <input type="number" class="form-control" name="numerobaños" value="{{ $domos->numerobaños }}"
@@ -55,15 +56,13 @@
 
                     </div>
 
-
                     <br>
-
                     <button type="submit" class="btn btn-info btn-block">Actualizar</button>
                 </div>
             </div>
         </div>
-</form>
-<br><br><br>
+  </form>
+  <br><br><br>
 
 
 @endsection
