@@ -144,6 +144,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Nombre Rol</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="nombreRol">
+                    <small class="text-danger">{{$errors->first('nombreRol')}}</small>
                 </div>
                 <div class="form-group">
                     <label for="estado">Estado</label>

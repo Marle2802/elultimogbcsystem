@@ -11,6 +11,7 @@ use App\Http\Controllers\CaracteristicasController;
 use App\Http\Controllers\DomoCaracteristicaController;
 use App\Http\Controllers\VentasDetalleController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\AyudasController;
 use App\Http\Controllers\DashboarController;
 use App\Http\Controllers\ReservaDetalleController;
 
@@ -88,9 +89,6 @@ Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->nam
 Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name('domocaracteristicalistar');
 Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar'); 
 
-
-
-
 //rutas plan
 Route::get('/plan/servicios', [PlanServicioController::class, 'index'])->name('planservicioindex');
 Route::post('/plan/guardar', [PlanServicioController::class, 'save'])->name('planservicioguardar');
@@ -154,6 +152,11 @@ Route::controller(VentasDetalleController::class)->group(
         Route::put('venta/actualizar/{id}', 'update');
     }
 );
+
+//Ayudas
+
+Route::get('ayudas', [AyudasController::class, 'index'])->name('ayudasIndex');
+
 
 
 
