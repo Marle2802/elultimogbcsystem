@@ -11,7 +11,7 @@ use App\Http\Controllers\CaracteristicasController;
 use App\Http\Controllers\DomoCaracteristicaController;
 use App\Http\Controllers\VentasDetalleController;
 use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\DashboarController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservaDetalleController;
 use App\Http\Controllers\RecomendacionesController;
 
@@ -39,15 +39,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    Route::get('/Dashboard', function () {
+        return view('Dashboard');
     })->name('dashboard');
 
-
-    // Route::get('/recomendaciones', function () {
-    //     return view('recomendaciones');
-    // });
-
+Route::controller(DashboardController::class)->group(
+        function () {
+            Route::get('Dashboard', 'index');
+        }
+    );
 /*Route::get('/Usuarios', [UserController::class, 'index'])->name('ListUser');
 
 Route::get('/Roles', function () {

@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('aside_menu')
 @include('layouts.aside')
@@ -53,6 +52,5 @@ rel="stylesheet">
             @endif
         </div>
     </div>
-
 
     @endsection

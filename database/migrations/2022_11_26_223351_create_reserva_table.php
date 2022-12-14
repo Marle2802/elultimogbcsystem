@@ -25,10 +25,14 @@ return new class extends Migration
             $table->date('fechafinal');
             $table->date('fechapagoparcial');
             $table->double('totalservicio');
-            $table->integer('estado');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('id_plan')->references('id')->on('plan');
-            $table->foreign('domo_id')->references('id')->on('domo');
+            $table->double('pagoadicional');
+            $table->enum('estado',[1,2,3]);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
+            $table->foreign('id_plan')->references('id')->on('plan')->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
+            $table->foreign('domo_id')->references('id')->on('domo')->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
 
         });
     }

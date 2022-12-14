@@ -29,6 +29,7 @@ class ReservaRequest extends FormRequest
             'fechareserva'=>'required',
             'fechapagoparcial'=>'required',
             'pagoparcial'=>'min:5|max:8',
+            'pagoadicional'=>'min:5|max:8',
             'totalpagoparcial'=>'min:5|max:8',
             'totalservicio'=>'min:5|max:8',
 
@@ -43,6 +44,7 @@ class ReservaRequest extends FormRequest
             'fechareserva'=>'La fecha reserva es requerida y',
             'fechapagoparcial'=>'La fecha del pago parcial es requerida y',
             'pagoparcial'=>'El pago parcial es requerido y',
+            'pagoadicional'=>'El pago adicional es requerido y',
             'totalpagoparcial'=>'El total del pago  es requerido y',
             'totalservicio'=>'El total del serivicio es requerido y',
         ];
