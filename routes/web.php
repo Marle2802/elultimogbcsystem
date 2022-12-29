@@ -13,6 +13,7 @@ use App\Http\Controllers\VentasDetalleController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservaDetalleController;
+use App\Http\Controllers\RecomendacionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -159,6 +160,7 @@ Route::controller(VentasDetalleController::class)->group(
     }
 );
 
+Route::get('recomendaciones', [RecomendacionesController::class, 'index'])->name('vistarecomendacionindex');
 
 
 });

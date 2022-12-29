@@ -31,7 +31,7 @@ class ReservaRequest extends FormRequest
             'pagoparcial'=>'min:5|max:8',
             'pagoadicional'=>'min:5|max:8',
             'totalpagoparcial'=>'min:5|max:8',
-            'totalservicio'=>'min:5|max:8',
+            'totalservicio'=>'min:1|max:8',
 
         ];
     }

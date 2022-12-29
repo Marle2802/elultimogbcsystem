@@ -98,10 +98,10 @@
                         <label for=" ">Domo</label>
                         <select name="domo_id" class="form-control" required>
                             <option value="">Seleccione</option>
-                            @foreach($domos as $domo)                            
+                            @foreach($domos as $domo)
                             <option value="{{ $domo->id }}" {{ $domo->id == $planes->domo_id ? 'selected' : '' }}>{{ $domo->nombre }}</option>
                             @endforeach
-                            
+
                         </select>
                     </div>
                     <div class="form-group col-6">
@@ -185,7 +185,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tblServicios">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -232,20 +232,20 @@
                         <td>
                             ${servicio.precio}
                         </td>
-                        
+
                         <td>
                             <button type="button" class="btn btn-danger" onclick="eliminar_servicio(${servicio.id})"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     <tr>
-                
+
                 `);
-                suma = suma + parseInt(precio);
-                        console.log(suma) 
+                suma = suma + parseInt(servicio.precio);
+                        console.log(suma)
                         document.getElementById('totalservicio').value = suma;
             }
         })
-       
-        
+
+
 
     }
     cargarServiciosPlan()
@@ -257,7 +257,7 @@
 
                     /* let cantidad = $("#cantidad").val(); */
                     let existe = serviciosD.includes(servicio_id)
-                                        
+
                         if (existe) {
                             Swal.fire({
                             icon: 'error',
@@ -266,10 +266,10 @@
                             showConfirmButton: false,
                             timer: 1500
                         })
-                            
+
                         } else {
                             serviciosD.push(servicio_id)
-                            console.log(serviciosD); 
+                            console.log(serviciosD);
                             $("#tblServicios").append(`
                             <tr id="tr-${servicio_id}">
                                 <td>
@@ -279,34 +279,34 @@
                                 <td>
                                     ${precio}
                                 </td>
-                                
+
                                 <td>
                                     <button type="button" class="btn btn-danger" onclick="eliminar_servicio(${servicio_id})"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             <tr>
-                        
+
                         `);
                         suma = suma + parseInt(precio);
-                        console.log(suma) 
+                        console.log(suma)
                         document.getElementById('totalservicio').value = suma;
                         }
-                    
-        
+
+
                     /* console.log(caracteristicasD); */
                     }
-                function eliminar_servicio(id){
-                    const index = serviciosD.indexOf(id.toString())
-                    if(index>-1){
-                        serviciosD.splice(index, 1);
-                        // const precio = document.querySelector('#tr-'+id).children[1]                                                
-                        // suma = suma - precio;
-                        // console.log(suma) 
-                        // document.getElementById('totalservicio').value = suma; 
-                        $("#tr-" + id).remove();
-                    }
-                        console.log("Nuevo araray",serviciosD);
-                }
+                    function eliminar_servicio(id){
 
+const index = serviciosD.indexOf(id.toString())
+
+if(index>-1){
+    serviciosD.splice(index, 1);
+    const precioServicio = parseInt(document.querySelector(`#tr-${id}`).children[1].textContent)
+    suma = suma - precioServicio
+    document.getElementById('totalservicio').value = suma;
+    $("#tr-" + id).remove();
+}
+    console.log("Nuevo araray",serviciosD);
+}
 </script>
 
 

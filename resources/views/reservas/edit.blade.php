@@ -37,51 +37,43 @@
 
                     <div class="form-group col-6">
                         <label for="fechainicio">Fecha Inicio</label>
-                        <input type="date" class="form-control" placeholder="" name="fechainicio"
-                            value="{{$reserva->fechainicio}}" required>
+                        <input type="date" class="form-control" placeholder="" name="fechainicio" value="{{$reserva->fechainicio}}" required>
                         <small class="text-danger">{{$errors->first('fechainicio')}}</small>
                     </div>
                     <div class="form-group col-6">
                         <label for="fechareserva">Fecha Reserva</label>
-                        <input type="date" class="form-control" placeholder="" name="fechareserva"
-                            value="{{ $reserva->fechareserva}}" required>
+                        <input type="date" class="form-control" placeholder="" name="fechareserva" value="{{ $reserva->fechareserva}}" required>
                         <small class="text-danger">{{$errors->first('fechareserva')}}</small>
                     </div>
                     <div class="form-group col-6">
                         <label for="fechafinal">Fecha Final</label>
-                        <input type="date" class="form-control" placeholder="" name="fechafinal"
-                            value="{{ $reserva->fechafinal}}" required>
+                        <input type="date" class="form-control" placeholder="" name="fechafinal" value="{{ $reserva->fechafinal}}" required>
                         <small class="text-danger">{{$errors->first('fechafinal')}}</small>
                     </div>
                     <div class="form-group col-6">
                         <label for="fechapagoparcial">Fecha Pago Parcial</label>
-                        <input type="date" class="form-control" placeholder="" name="fechapagoparcial"
-                            value="{{ $reserva->fechapagoparcial}}" required>
+                        <input type="date" class="form-control" placeholder="" name="fechapagoparcial" value="{{ $reserva->fechapagoparcial}}" required>
                         <small class="text-danger">{{$errors->first('fechapagoparcial')}}</small>
                     </div>
 
                     <div class="form-group col-6">
                         <label for="pagoparcial">Pago Parcial</label>
-                        <input type="number" class="form-control" placeholder="Ingrese el pago parcial"
-                            name="pagoparcial" value="{{ $reserva->pagoparcial}}" required>
+                        <input type="number" class="form-control" placeholder="Ingrese el pago parcial" name="pagoparcial" value="{{ $reserva->pagoparcial}}" required>
                         <small class="text-danger">{{$errors->first('pagoparcial')}}</small>
                     </div>
                     <div class="form-group col-6">
                         <label for="totalpagoparcial">Total Pago</label>
-                        <input type="number" class="form-control" placeholder="Ingrese el total de pago parcial  "
-                            name="totalpagoparcial" value="{{   $reserva->totalpagoparcial }}" required>
+                        <input type="number" class="form-control" placeholder="Ingrese el total de pago parcial  " name="totalpagoparcial" value="{{   $reserva->totalpagoparcial }}" required>
                         <small class="text-danger">{{$errors->first('totalpagoparcial')}}</small>
                     </div>
                     <div class="form-group col-6">
                         <label for="totalservicio">Total Servicios</label>
-                        <input id="totalservicio" type="number" class="form-control" placeholder="Ingrese el total servicios"
-                            name="totalservicio" value="{{   $reserva->totalservicio }}" required>
+                        <input id="totalservicio" type="number" class="form-control" placeholder="Ingrese el total servicios" name="totalservicio" value="{{   $reserva->totalservicio }}" required>
                         <small class="text-danger">{{$errors->first('totalservicio')}}</small>
                     </div>
                     <div class="form-group col-6">
                         <label for="pagoadicional">Pago Adicional</label>
-                        <input type="number" class="form-control" placeholder="Ingrese el total servicios"
-                            name="pagoadicional" value="{{   $reserva->pagoadicional }}" required>
+                        <input type="number" class="form-control" placeholder="Ingrese el total servicios" name="pagoadicional" value="{{   $reserva->pagoadicional }}" required>
                         <small class="text-danger">{{$errors->first('pagoadicional')}}</small>
                     </div>
                     <div class="form-group col-6">
@@ -110,15 +102,15 @@
 
                             @if($reserva->estado == 1)
                             <option value="1" selected>Activo</option>
-                            <option value="2" >Inactivo</option>
+                            <option value="2">Inactivo</option>
                             <option value="3">Cancelado</option>
                             @elseif ($reserva->estado == 2)
-                            <option value="1" >Activo</option>
+                            <option value="1">Activo</option>
                             <option value="2" selected>Inactivo</option>
                             <option value="3">Cancelado</option>
                             @elseif ($reserva->estado == 3)
-                            <option value="1" >Activo</option>
-                            <option value="2" >Inactivo</option>
+                            <option value="1">Activo</option>
+                            <option value="2">Inactivo</option>
                             <option value="3" selected>Cancelado</option>
                             @endif
 
@@ -152,8 +144,7 @@
                 </div>
 
                 <div class="col-12">
-                    <button onclick="agregar_servicio()" type="button" class="btn btn-success float-right"><i
-                            class="fa-solid fa-plus"></i></button>
+                    <button onclick="agregar_servicio()" type="button" class="btn btn-success float-right"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <br>
             </div>
@@ -191,20 +182,20 @@
 <script>
     let serviciosD = [''];
     let suma = 0;
-    let resta=0;
+    let resta = 0;
 
     function cargarServiciosPlan() {
         const servicios = JSON.parse('{!! json_encode($servicios)!!}')
-        console.log('servicios DB',servicios);
+        console.log('servicios DB', servicios);
         const servicioReserva = JSON.parse('{!! json_encode($servicioreserva) !!}')
-        console.log('servicios plan',servicioReserva);
+        console.log('servicios plan', servicioReserva);
         let serviciosIds = []
 
         servicioReserva.forEach(servcio => {
             serviciosIds.push(servcio.servicio_id)
         });
         let serviciosMostrar = []
-        servicios.forEach(servicio=>{
+        servicios.forEach(servicio => {
             if (serviciosIds.includes(servicio.id)) {
                 serviciosMostrar.push(servicio)
                 serviciosD.push(servicio.id.toString())
@@ -224,9 +215,9 @@
                     <tr>
 
                 `);
-                suma = suma + parseInt(precio);
-                        console.log(suma)
-                        document.getElementById('totalservicio').value = suma;
+                suma = suma + parseInt(servicio.precio);
+                console.log(suma)
+                document.getElementById('totalservicio').value = suma;
             }
         })
 
@@ -234,28 +225,29 @@
 
     }
     cargarServiciosPlan()
-    function agregar_servicio(){
-                    let servicio_id = $("#servicios option:selected").val();
-                    let servicio_text = $("#servicios option:selected").text();
-                    let precio_ser = servicio_text.split("$");
-                    let precio = precio_ser[1];
 
-                    /* let cantidad = $("#cantidad").val(); */
-                    let existe = serviciosD.includes(servicio_id)
+    function agregar_servicio() {
+        let servicio_id = $("#servicios option:selected").val();
+        let servicio_text = $("#servicios option:selected").text();
+        let precio_ser = servicio_text.split("$");
+        let precio = precio_ser[1];
 
-                        if (existe) {
-                            Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'El servicio ya existe!',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
+        /* let cantidad = $("#cantidad").val(); */
+        let existe = serviciosD.includes(servicio_id)
 
-                        } else {
-                            serviciosD.push(servicio_id)
-                            console.log(serviciosD);
-                            $("#tblServicios").append(`
+        if (existe) {
+            Swal.fire({
+                icon: 'error'
+                , title: 'Oops...'
+                , text: 'El servicio ya existe!'
+                , showConfirmButton: false
+                , timer: 1500
+            })
+
+        } else {
+            serviciosD.push(servicio_id)
+            console.log(serviciosD);
+            $("#tblServicios").append(`
                             <tr id="tr-${servicio_id}">
                                 <td>
                                     <input type="hidden" name="servicio_id[]" value="${servicio_id} "/>
@@ -271,26 +263,28 @@
                             <tr>
 
                         `);
-                        suma = suma + parseInt(precio);
-                        console.log(suma)
-                        document.getElementById('totalservicio').value = suma;
-                        }
+            suma = suma + parseInt(precio);
+            console.log(suma)
+            document.getElementById('totalservicio').value = suma;
+        }
 
 
-                    /* console.log(caracteristicasD); */
-                    }
-                function eliminar_servicio(id){
-                    const index = serviciosD.indexOf(id.toString())
-                    if(index>-1){
-                        serviciosD.splice(index, 1);
-                        // const precio = document.querySelector('#tr-'+id).children[1]
-                        // suma = suma - precio;
-                        // console.log(suma)
-                        // document.getElementById('totalservicio').value = suma;
-                        $("#tr-" + id).remove();
-                    }
-                        console.log("Nuevo araray",serviciosD);
-                }
+        /* console.log(caracteristicasD); */
+    }
+
+    function eliminar_servicio(id) {
+
+        const index = serviciosD.indexOf(id.toString())
+
+        if (index > -1) {
+            serviciosD.splice(index, 1);
+            const precioServicio = parseInt(document.querySelector(`#tr-${id}`).children[1].textContent)
+            suma = suma - precioServicio
+            document.getElementById('totalservicio').value = suma;
+            $("#tr-" + id).remove();
+        }
+        console.log("Nuevo araray", serviciosD);
+    }
 
 </script>
 

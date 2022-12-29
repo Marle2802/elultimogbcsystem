@@ -132,7 +132,7 @@
 
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('vistarecomendacionindex') }}">
             <i class="bi bi-chat-heart"></i>
             <span>Recomendaciones</span></a>
     </li>

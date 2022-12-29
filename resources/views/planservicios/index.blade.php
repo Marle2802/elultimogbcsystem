@@ -64,7 +64,7 @@
                     <div class="form-group col-6">
                         <label for="totalservicio">Total servicios</label>
                         <input id="totalservicio" type="number" class="form-control" placeholder="Total"
-                            name="totalservicio" >
+                            name="totalservicio" required value="0">
                         <small class="text-danger">{{$errors->first('totalservicio')}}</small>
 
                     </div>
@@ -78,7 +78,7 @@
                    {{--  <div class="form-group col-6">
                         <label for="">Total plan</label>
                         <input type="number" class="form-control" placeholder="Total"
-                            name="totalplan" disabled> 
+                            name="totalplan" disabled>
                     </div> --}}
                     {{-- <div class="form-group col-6">
                         <label for="">Estado</label>
@@ -106,7 +106,7 @@
                             <label for="">Nombre</label>
                             <select name="servicios" id="servicios" class="form-control" required>
                                 @foreach ($servicios as $value)
-                                <option value="{{ $value->id }}">{{ $value->nombre }} ${{ $value->precio }}</option>        
+                                <option value="{{ $value->id }}">{{ $value->nombre }} ${{ $value->precio }}</option>
 
                                 @endforeach
                             </select>
@@ -157,8 +157,8 @@
 
                     /* let cantidad = $("#cantidad").val(); */
                     let existe = serviciosD.includes(servicio_id)
-                                        
-                        
+
+
                         if (existe) {
                             Swal.fire({
                             icon: 'error',
@@ -167,10 +167,10 @@
                             showConfirmButton: false,
                             timer: 1500
                         })
-                            
+
                         } else {
                             serviciosD.push(servicio_id)
-                            console.log(serviciosD); 
+                            console.log(serviciosD);
                             $("#tblServicios").append(`
                             <tr id="tr-${servicio_id}">
                                 <td>
@@ -180,33 +180,35 @@
                                 <td>
                                     ${precio}
                                 </td>
-                                
+
                                 <td>
                                     <button type="button" class="btn btn-danger" onclick="eliminar_servicio(${servicio_id})"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             <tr>
-                        
+
                         `);
                         suma = suma + parseInt(precio);
-                        console.log(suma) 
+                        console.log(suma)
                         document.getElementById('totalservicio').value = suma;
                         }
-                    
-        
+
+
                     /* console.log(caracteristicasD); */
                     }
-                function eliminar_servicio(id){
-                    const index = serviciosD.indexOf(id.toString())
-                    if(index>-1){
-                        serviciosD.splice(index, 1);
-                        $("#tr-" + id).remove();
+                    function eliminar_servicio(id){
 
-                        /* suma = suma - parseInt(precio);
-                        console.log(suma) 
-                        document.getElementById('totalservicio').value = suma; */
-                    }
-                        console.log("Nuevo araray",serviciosD);
-                }
+const index = serviciosD.indexOf(id.toString())
+
+if(index>-1){
+    serviciosD.splice(index, 1);
+    const precioServicio = parseInt(document.querySelector(`#tr-${id}`).children[1].textContent)
+    suma = suma - precioServicio
+    document.getElementById('totalservicio').value = suma;
+    $("#tr-" + id).remove();
+}
+    console.log("Nuevo araray",serviciosD);
+}
+
 
 </script>
 

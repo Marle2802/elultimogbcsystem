@@ -45,15 +45,13 @@ class ReservaDetalleController extends Controller
                 "estado"=>1
             ]);
 
-            foreach($input["servicio_id"] as $key => $value){
-                ReservaDetalle::create([
-                "reserva_id"=>$reserva->id,
-                "servicio_id"=>$value,
-
-            ]);
-
-                 /* $ins = Servicio::find($value);
-                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);  */
+            if ($request['servicio_id'] != null) {
+                foreach ($request["servicio_id"] as $key => $value) {
+                    ReservaDetalle::create([
+                        "servicio_id" => $value,
+                        "reserva_id" => $reserva->id,
+                    ]);
+                }
             }
 
                 DB::commit();
@@ -121,20 +119,21 @@ class ReservaDetalleController extends Controller
         $reserva->domo_id = $request->post('domo_id');
         $reserva->id_plan = $request->post('id_plan');
         $reserva->estado = $request->post('estado');
-        $reserva->save();
-
 
         $reserva->save();
-        ReservaDetalle::where('reserva_id','=',$reserva->id)->delete();
-        foreach($request["servicio_id"] as $key => $value){
-            ReservaDetalle::create([
-            "servicio_id"=>$value,
-            "reserva_id"=>$reserva->id,
-        ]);
+        if ($request['servicio_id'] != null) {
+            ReservaDetalle::where('reserva_id', '=', $reserva->id)->delete();
+            foreach ($request["servicio_id"] as $key => $value) {
+                ReservaDetalle::create([
+                    "servicio_id" => $value,
+                    "reserva_id" => $reserva->id,
+                ]);
+            }
 
-
-        return redirect("reserva/listar")->with('status', '2');
-    }
-
+        }
+        else {
+            ReservaDetalle::where('reserva_id', '=', $reserva->id)->delete();
+        }
+    return redirect("reserva/listar")->with('status', '2');
     }
 }

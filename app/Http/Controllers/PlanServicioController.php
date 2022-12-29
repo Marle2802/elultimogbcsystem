@@ -36,18 +36,14 @@ class PlanServicioController extends Controller
                 "estado"=>1
             ]);
 
-           /*  if ($input['servicio_id']) {
-                # code...
-            } */
 
-           foreach($input["servicio_id"] as $key => $value){
+            if ($request['servicio_id'] != null) {
+                foreach ($request["servicio_id"] as $key => $value) {
                     PlanServicio::create([
-                    "servicio_id"=>$value,
-                    "plan_id"=>$plan->id,
-                ]);
-
-                 /* $ins = Servicio::find($value);
-                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);  */
+                        "servicio_id" => $value,
+                        "plan_id" => $plan->id,
+                    ]);
+                }
             }
 
                 DB::commit();
@@ -106,19 +102,31 @@ class PlanServicioController extends Controller
         $plan->estado = $request->post('estado');
 
         // dd($request->all());
-        $plan->save();
+      /*   $plan->save();
         PlanServicio::where('plan_id','=',$plan->id)->delete();
         foreach($request["servicio_id"] as $key => $value){
             PlanServicio::create([
             "servicio_id"=>$value,
             "plan_id"=>$plan->id,
         ]);
-
-         /* $ins = Servicio::find($value);
-        $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);  */
     }
-
-
         return redirect("plan/listar")->with('status', '2');
     }
+}
+ */
+if ($request['plan_id'] != null) {
+    PlanServicio::where('plan_id', '=', $plan->id)->delete();
+    foreach ($request["servicio_id"] as $key => $value) {
+        PlanServicio::create([
+            "servicio_id" => $value,
+            "plan_id" => $plan->id,
+        ]);
+    }
+
+}
+else {
+    PlanServicio::where('plan_id', '=', $plan->id)->delete();
+}
+return redirect("plan/listar")->with('status', '2');
+}
 }

@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-       
+
         $users=User::all();
         $roles=Role::all();
         return view('admin.user.index', compact('users','roles'));
@@ -48,17 +48,17 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        
+
         $input= $request->all();
-        
+
         $input['password']=Hash::make($input['password']);
-        
+
 
         $users=User::create($input);
         $users->assignRole($request->input('role'));
 
        return redirect('/Usuarios')->with('status', '1');
-       
+
     }
 
     /**
@@ -102,7 +102,7 @@ class UserController extends Controller
         'roles'=>'required']);*/
         $input=$request->all();
 
-       
+
 
         if(!empty($input['password'])){
             $input['password']=Hash::make($input['password']);
