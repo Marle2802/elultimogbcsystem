@@ -200,39 +200,10 @@
                     }
 
                 </script>
-               {{--  <script type="text/javascript">
-                    google.charts.load("current", {packages:["corechart"]});
-                    google.charts.setOnLoadCallback(drawChart);
-                    function drawChart() {
-
-
-                      var data = google.visualization.arrayToDataTable([
-                        ['Cantidad', 'Speakers (in millions)'],
-                        ['servicios',  5.85],
-                        ['planes',  1.66],
-                        ['domos', 0.316]
-
-                      ]);
-
-                    var options = {
-                      legend: 'none',
-                      pieSliceText: 'label',
-                      title: 'Swiss Language Use (100 degree rotation)',
-                      pieStartAngle: 100,
-                    };
-
-                      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                      chart.draw(data, options);
-                    }
-                  </script>
-                  </head>
-                  <body>
-                    <div id="piechart" style="width: 400px; height: 500px;"></div>
-                  </body>
 
 
 
- --}}
+
 
 
 
