@@ -138,7 +138,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('ayudasIndex') }}">
             <i class="bi bi-question-circle-fill"></i>
             <span>Ayudas</span></a>
     </li>
